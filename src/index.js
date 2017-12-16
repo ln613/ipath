@@ -1,0 +1,1 @@
+export { update, parsePath } from './ipath';

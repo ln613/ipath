@@ -1,0 +1,31 @@
+{
+  "name": "ipath",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [
+    "javascript",
+    "immutable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ln613/ipath.git"
+  },
+  "main": "dist",
+  "scripts": {
+    "start": "watch \"npm run build\" src",
+    "build": "babel src --out-dir dist",
+    "test": "jest"
+  },
+  "author": "Nan Li",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^21.2.1",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
