@@ -116,34 +116,34 @@ export const parsePath = path => {
   }, [], lens);
 };  
 
-export const update = (obj, path, value, params, isReplace) => {
+export const update = (obj, path, value, params, isMerge) => {
   if (is(String, path))
     path = parsePath(path);
-  
+
   if (is(Function, path))
     path = path(params, obj);
 
   if (!is(Array, path))
     return obj;
-  
+
   const idx = last(path);
   
   if (is(Number, idx)) { // array index
-    const arr = init(path);
+    const lp = lensPath(init(path));
 
     if (isNil(value)) // delete
-      return over(lensPath(arr), remove(idx, 1), obj);
-    
-    if (idx === 0 && isNil(view(lensPath(arr), obj))) // add first
-      return set(lensPath(arr), [value], obj);
-  }
-  else {
-    const lp = lensPath(path);
-    const cv = view(lp, obj);
-    if (is(Object, cv) && !is(Array, cv) && !isReplace) // merge objects
-      return over(lp, x => Object.assign({}, x, value), obj);
-    return set(lp, value, obj);
-  }
+      return over(lp, remove(idx, 1), obj);
 
-  return set(lensPath(path), value, obj);
+    if (idx === 0 && isNil(view(lp, obj))) // add first
+      return set(lp, [value], obj);
+  }
+  
+  const lp = lensPath(path);
+  const cv = view(lp, obj);
+  if (isMerge && isObjNotArray(cv) && isObjNotArray(value)) // merge objects
+    return over(lp, x => Object.assign({}, x, value), obj);
+  
+  return set(lp, value, obj);
 }
+
+export const isObjNotArray = o => is(Object, o) && !is(Array, o);
