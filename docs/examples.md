@@ -1,6 +1,6 @@
 ## Replace value
 
-After you specify the [_path_](./update.md) to find the target node, you can use the _update_ function to replace the target node with a new value.
+After you specify the [_path_](./path.md) to find the target node, you can use the _update_ function to replace the target node with a new value.
 
 ```js
 const newObj = update(obj, 'artists[0].albums[id=2].year', 1998);

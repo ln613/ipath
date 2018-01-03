@@ -1,6 +1,10 @@
 # ipath
 
+[![Build Status](https://travis-ci.org/ln613/ipath.svg?branch=master)](https://travis-ci.org/ln613/ipath)
+
 Ensure immutability by updating javascript objects using a path similar to CSS/jQuery selector, great for react/redux applications where immutability is required, especially when working with deeply nested objects.
+
+[documetation](https://ln613.gitbooks.io/ipath/)
 
 ## Install
 
