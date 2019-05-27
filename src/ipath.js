@@ -140,6 +140,10 @@ export const update = (obj, path, value, params, isMerge) => {
   
   const lp = lensPath(path);
   const cv = view(lp, obj);
+
+  if (is(Function, value))
+    value = value(cv);
+
   if (isMerge && isObjNotArray(cv) && isObjNotArray(value)) // merge objects
     return over(lp, x => Object.assign({}, x, value), obj);
   

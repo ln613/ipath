@@ -37,4 +37,7 @@ newObj = update(obj, 'artists[0].albums[]', newAlbum);
 
 newObj = update(obj, 'artists[id=3].albums[name=a2]', null);
 // delete an item from array
+
+newObj = update({ a: { b: 1 } }, 'a.b', x => x + 1);
+// calculate the new value based on the existing value
 ```

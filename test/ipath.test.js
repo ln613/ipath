@@ -108,6 +108,9 @@ test('update', () => {
 
   newObj = update({}, ['artists', 0], obj.artists[0]);
   expect(newObj.artists).toMatchObject(obj.artists.slice(0, 1));
+
+  newObj = update({ a: { b: 1 } }, 'a.b', x => x + 1);
+  expect(newObj.a.b).toBe(2);
 });
 
 // const newArtist = { id: 7, name: 'Elton John' };
